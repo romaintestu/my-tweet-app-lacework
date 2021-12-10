@@ -35,6 +35,6 @@ spec:
     spec:
       containers:
       - name: my-tweet-app
-        image: securethecloud/my-tweet-app-lacework:latest
+        image: romaintestu/my-tweet-app-lacework:latest
         ports:
         - containerPort: 5000
