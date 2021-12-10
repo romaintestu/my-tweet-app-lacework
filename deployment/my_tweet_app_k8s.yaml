@@ -19,7 +19,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-tweet-app
-  namespace: lacework
   labels:
     app: my-tweet-app
 spec:
