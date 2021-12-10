@@ -60,14 +60,14 @@ jobs:
            with:
              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-             aws-region: eu-central-1
+             aws-region: eu-west-3
 
          - name: deploy to cluster
            uses: kodermax/kubectl-aws-eks@master
            env:
              KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
            with:
-             args: set image deployment/my-tweet-app-lacework my-tweet-app-lacework=romaintestu/my-tweet-app-lacework:production
+             args: set image deployment/my-tweet-app my-tweet-app=romaintestu/my-tweet-app-lacework:production -n lacework
 
          - name: verify deployment
            uses: kodermax/kubectl-aws-eks@master
