@@ -49,7 +49,7 @@ jobs:
            if: ${{ failure() }} 
            env:
             GITHUB_CONTEXT: ${{ toJSON(github) }}
-            run: echo Context "$GITHUB_CONTEXT"
+           run: echo Context "$GITHUB_CONTEXT"
            
          - name: Login
            if: ${{ failure() }}   
