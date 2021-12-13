@@ -40,7 +40,7 @@ jobs:
              fail_if_medium_vulnerabilities_found: false
              fail_if_low_vulnerabilities_found: false
              fail_if_info_vulnerabilities_found: false
-             save_html_report: false
+             save_html_report: true
              html_report_file_name: myreport.html
            
          - name: Log
@@ -63,7 +63,7 @@ jobs:
               project: SP
               issuetype: Task
               summary: |
-                Build completed for ${{ steps.lw-scanner.outputs }}
+                Docker Image Build : romaintestu/my-tweet-app-lacework
               description: |
                 TEST ROMAIN
                 ${{join(steps.lw-scanner.outputs.*, '\n')}}
