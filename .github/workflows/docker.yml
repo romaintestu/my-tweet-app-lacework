@@ -47,9 +47,7 @@ jobs:
             
          - name: Context
            if: ${{ failure() }} 
-           env:
-            GITHUB_CONTEXT: ${{ toJSON(github) }}
-           run: echo Context "$GITHUB_CONTEXT"
+           run: echo Context ${{ toJSON(steps.lw-scanner.outputs) }}
            
          - name: Login
            if: ${{ failure() }}   
