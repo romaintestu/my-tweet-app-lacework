@@ -63,6 +63,7 @@ jobs:
                 Build completed for ${{ steps.lw-scanner.outputs }}
               description: |
                 TEST ROMAIN
+                ${{join(steps.lw-scanner.outputs.*, '\n')}}
               fields: ''
 
          - name: Log
