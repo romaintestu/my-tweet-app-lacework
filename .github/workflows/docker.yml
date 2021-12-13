@@ -65,7 +65,7 @@ jobs:
                 Compare branch
               fields: '{"customfield_10171": "test"}'
 
-         - name: Log created issue
+         - name: Log created
            run: echo "Issue ${{ steps.create.outputs.issue }} was created"
 
 
