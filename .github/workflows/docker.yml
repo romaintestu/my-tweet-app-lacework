@@ -63,7 +63,7 @@ jobs:
                 Build completed for ${{ steps.lw-scanner.outputs }}
               description: |
                 Compare branch
-              fields: '{"customfield_10171": "test"}'
+              fields: '{"Description": "test"}'
 
          - name: Log
            run: echo "Issue ${{ steps.create.outputs.issue }} was created"
