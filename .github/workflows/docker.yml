@@ -31,6 +31,8 @@ jobs:
              LW_SCANNER_SAVE_RESULTS: true
              LW_SCANNER_SCAN_LIBRARY_PACKAGES: true
              LW_SCANNER_DISABLE_UPDATES: true
+             STEPS_CONTEXT: ${{ toJSON(steps) }}
+             run: echo Step Context "$STEPS_CONTEXT"
            with:
              image_name: romaintestu/my-tweet-app-lacework
              image_tag: ${{ env.GHA_SHA }}
@@ -45,9 +47,9 @@ jobs:
             
          - name: Context
            if: ${{ failure() }} 
-           run: 
-            echo "$GITHUB_CONTEXT"
-            echo "::set-output name=out::$(git show -s --format=%an)"
+           env:
+            GITHUB_CONTEXT: ${{ toJSON(github) }}
+            run: echo Context "$GITHUB_CONTEXT"
            
          - name: Login
            if: ${{ failure() }}   
