@@ -43,8 +43,8 @@ jobs:
              save_html_report: false
              html_report_file_name: myreport.html
            
-         - name: My TEST
-           run: echo ::set-output name=myvar::toto
+         - name: Log
+           run: echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
   
          - name: Login
            uses: atlassian/gajira-login@master
