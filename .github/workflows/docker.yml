@@ -35,7 +35,7 @@ jobs:
              image_name: romaintestu/my-tweet-app-lacework
              image_tag: ${{ env.GHA_SHA }}
              fail_only_if_vulnerabilities_fixable: false
-             fail_if_critical_vulnerabilities_found: false
+             fail_if_critical_vulnerabilities_found: true
              fail_if_high_vulnerabilities_found: false
              fail_if_medium_vulnerabilities_found: false
              fail_if_low_vulnerabilities_found: false
@@ -43,12 +43,8 @@ jobs:
              save_html_report: true
              html_report_file_name: myreport.html
            
-         - name: Log
-           run: 
-              echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
-              echo "Scanner executed NAME ${{ steps.lw-scanner.outputs.name }}"          
-          
-  
+           
+           if: ${{ always() && steps.lw-scanner.outcome == 'failure' }}    
          - name: Login
            uses: atlassian/gajira-login@master
            env:
@@ -68,6 +64,14 @@ jobs:
                 TEST ROMAIN
                 ${{join(steps.lw-scanner.outputs.*, '\n')}}
               fields: ''
+           
+         - name: Log
+           run: 
+              echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
+              echo "Scanner executed NAME ${{ steps.lw-scanner.outputs.name }}"          
+          
+  
+
 
          - name: Log
            run: echo "Issue ${{ steps.create.outputs.issue }} was created"
