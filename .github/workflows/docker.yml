@@ -44,7 +44,10 @@ jobs:
              html_report_file_name: myreport.html
            
          - name: Log
-           run: echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
+           run: 
+              echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
+              echo "Scanner executed NAME ${{ steps.lw-scanner.outputs.name }}"          
+          
   
          - name: Login
            uses: atlassian/gajira-login@master
