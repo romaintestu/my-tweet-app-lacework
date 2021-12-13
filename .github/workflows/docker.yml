@@ -62,8 +62,8 @@ jobs:
               summary: |
                 Build completed for ${{ steps.lw-scanner.outputs }}
               description: |
-                Compare branch
-              fields: '{"Description": "test"}'
+                TEST ROMAIN
+              fields: ''
 
          - name: Log
            run: echo "Issue ${{ steps.create.outputs.issue }} was created"
