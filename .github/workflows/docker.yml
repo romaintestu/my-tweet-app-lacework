@@ -25,7 +25,6 @@ jobs:
 
          - name: lw-scanner
            uses: timarenz/lw-scanner-action@v0.3.0
-            echo "::set-output name=out::$(git show -s --format=%an)"
            env:
              LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
              LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
@@ -43,8 +42,12 @@ jobs:
              fail_if_info_vulnerabilities_found: false
              save_html_report: true
              html_report_file_name: myreport.html
-             
             
+         - name: Context
+           if: ${{ failure() }} 
+           run: 
+            echo "$GITHUB_CONTEXT"
+            echo "::set-output name=out::$(git show -s --format=%an)"
            
          - name: Login
            if: ${{ failure() }}   
