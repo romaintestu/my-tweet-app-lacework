@@ -44,7 +44,7 @@ jobs:
              html_report_file_name: myreport.html
            
          - name: Login
-           if: ${{ always() && steps.lw-scanner.outcome == 'failure' }}    
+           if: ${{ failure() }}   
            uses: atlassian/gajira-login@master
            env:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -52,7 +52,7 @@ jobs:
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         
          - name: Create
-           if: ${{ always() && steps.lw-scanner.outcome == 'failure' }}    
+           if: ${{failure()}}  
            id: create
            uses: atlassian/gajira-create@master
            with:
