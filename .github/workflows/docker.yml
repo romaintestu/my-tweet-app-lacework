@@ -67,9 +67,9 @@ jobs:
               summary: |
                 Docker Image Build : romaintestu/my-tweet-app-lacework
               description: |
-                TEST ROMAIN
-                ${{join(steps.lw-scanner.outputs.*, '\n')}}
-                OUT = ${{steps.lw-scanner.out}}
+                Des vulnérabilités critiques ont été détectées par Lacework lors du Build sur l'image romaintestu/my-tweet-app-lacework. Cette image doit être patchée avant déploiement.
+                Veuillez consulter le rapport dans Lacework : https://lwintadriandaniels.fra.lacework.net/ui/investigation/container/ContainerVulnerabilityDashboardUx3?accountName=lwintromaintestu&filters=eyJWdWxuX0ZpbHRlcnMuTlVNX0ZJWEVTIjpbeyJ0aXRsZSI6MSwidmFsdWUiOjF9XSwic2VhcmNoIjoicm9tYWludGVzdHUvbXktdHdlZXQtYXBwLWxhY2V3b3JrIn0%3D&parameters=eyJncm91cEJ5IjoiZGVmYXVsdCIsInN0YXJ0VGltZSI6MTYzOTI5OTYwMDAwMCwiZW5kVGltZSI6MTYzOTU2MjQwMDAwMCwicHJlc2V0IjoiUGFzdCAzIGRheXMifQ%3D%3D&ci=LWINTROM_DE361628BC150784965C98EE89D80B3C068537EF7030931
+                
               fields: ''
            
          - name: Log
