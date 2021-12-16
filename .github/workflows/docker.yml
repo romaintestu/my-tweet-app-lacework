@@ -49,7 +49,7 @@ jobs:
            if: ${{ failure() }} 
            run: echo Context ${{ toJSON(steps.lw-scanner.outputs) }}
            
-         - name: Login Jira test
+         - name: Login Jira test 2
            if: ${{ failure() }}   
            uses: atlassian/gajira-login@master
            env:
