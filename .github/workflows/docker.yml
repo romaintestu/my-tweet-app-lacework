@@ -23,7 +23,7 @@ jobs:
              tags: romaintestu/my-tweet-app-lacework:${{ env.GHA_SHA }},romaintestu/my-tweet-app-lacework:latest
              load: true
 
-         - name: lw-scanner
+         - name: lw-scanner 1
            uses: timarenz/lw-scanner-action@v0.3.0
            env:
              LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
