@@ -1,4 +1,4 @@
-# Use Alpine as base
+# Use Alpine as base test
 FROM alpine:3.10
 
 # Maintainer
