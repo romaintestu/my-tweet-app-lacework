@@ -36,6 +36,7 @@ jobs:
              FAIL_BUILD: true
              SEVERITY_THRESHOLD: fixable
              LW_SCANNER_DISABLE_LIBRARY_PACKAGES_SCANNING: true
+             USE_POLICY: true
             
          - name: Context
            if: ${{ failure() }} 
