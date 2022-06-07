@@ -35,6 +35,7 @@ jobs:
              BUILD_REPORT_FILE_NAME: myreport.html
              FAIL_BUILD: true
              SEVERITY_THRESHOLD: fixable
+             LW_SCANNER_DISABLE_LIBRARY_PACKAGES_SCANNING: true
             
          - name: Context
            if: ${{ failure() }} 
