@@ -42,41 +42,33 @@ jobs:
            if: ${{ failure() }} 
            run: echo Context ${{ toJSON(steps.lw-scanner.outputs) }}
            
-         - name: Login Jira test 2
-           if: ${{ failure() }}   
-           uses: atlassian/gajira-login@master
-           env:
-            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+#         - name: Login Jira test 2
+#           if: ${{ failure() }}   
+#           uses: atlassian/gajira-login@master
+#           env:
+#            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         
-         - name: Create
-           if: ${{failure()}}  
-           id: create
-           uses: atlassian/gajira-create@master
-           with:
-              project: SP
-              issuetype: Task
-              summary: |
-                Docker Image Build : romaintestu/my-tweet-app-lacework
-              description: |
-                Des vulnérabilités critiques ont été détectées par Lacework lors du Build sur l'image romaintestu/my-tweet-app-lacework. Cette image doit être patchée avant déploiement.
-                Veuillez consulter le rapport dans Lacework : https://lwintadriandaniels.fra.lacework.net/ui/investigation/container/ContainerVulnerabilityDashboardUx3?accountName=lwintromaintestu&filters=eyJWdWxuX0ZpbHRlcnMuTlVNX0ZJWEVTIjpbeyJ0aXRsZSI6MSwidmFsdWUiOjF9XSwic2VhcmNoIjoicm9tYWludGVzdHUvbXktdHdlZXQtYXBwLWxhY2V3b3JrIn0%3D&parameters=eyJncm91cEJ5IjoiZGVmYXVsdCIsInN0YXJ0VGltZSI6MTYzOTI5OTYwMDAwMCwiZW5kVGltZSI6MTYzOTU2MjQwMDAwMCwicHJlc2V0IjoiUGFzdCAzIGRheXMifQ%3D%3D&ci=LWINTROM_DE361628BC150784965C98EE89D80B3C068537EF7030931
-                
-              fields: ''
-           
-         - name: Log
-           run: 
-              echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
-              echo "Scanner executed NAME ${{ steps.lw-scanner.outputs.name }}"          
-          
-  
-
-
-         - name: Log
-           run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-
-
+  #       - name: Create
+  #         if: ${{failure()}}  
+  #         id: create
+  #         uses: atlassian/gajira-create@master
+  #         with:
+  #            project: SP
+  #            issuetype: Task
+  #            summary: |
+  #              Docker Image Build : romaintestu/my-tweet-app-lacework
+  #            description: |
+  #              Des vulnérabilités critiques ont été détectées par Lacework lors du Build sur l'image romaintestu/my-tweet-app-lacework. Cette image doit être patchée avant déploiement.
+  #              Veuillez consulter le rapport dans Lacework : https://lwintadriandaniels.fra.lacework.net/ui/investigation/container/ContainerVulnerabilityDashboardUx3?accountName=lwintromaintestu&filters=eyJWdWxuX0ZpbHRlcnMuTlVNX0ZJWEVTIjpbeyJ0aXRsZSI6MSwidmFsdWUiOjF9XSwic2VhcmNoIjoicm9tYWludGVzdHUvbXktdHdlZXQtYXBwLWxhY2V3b3JrIn0%3D&parameters=eyJncm91cEJ5IjoiZGVmYXVsdCIsInN0YXJ0VGltZSI6MTYzOTI5OTYwMDAwMCwiZW5kVGltZSI6MTYzOTU2MjQwMDAwMCwicHJlc2V0IjoiUGFzdCAzIGRheXMifQ%3D%3D&ci=LWINTROM_DE361628BC150784965C98EE89D80B3C068537EF7030931
+  #              
+  #            fields: ''
+  #         
+  #       - name: Log
+  #         run: 
+  #            echo "Scanner executed ${{ steps.lw-scanner.outputs.* }}"
+  #            echo "Scanner executed NAME ${{ steps.lw-scanner.outputs.name }}"          
 
          - name: Login to DockerHub
            uses: docker/login-action@v1
