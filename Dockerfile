@@ -1,6 +1,5 @@
 # Use Alpine as base test
-#FROM alpine:3.10
-FROM alpine:2.10.7-r0 
+FROM alpine:3.10
 
 USER root
 
