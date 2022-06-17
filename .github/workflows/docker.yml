@@ -23,20 +23,20 @@ jobs:
              tags: romaintestu/my-tweet-app-lacework:${{ env.GHA_SHA }},romaintestu/my-tweet-app-lacework:latest
              load: true
 
-         - name: lw-scanner Fortuneo
-           uses: lacework/lw-scanner-action@v0.6.0
-           with:
-             LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }} 
-             LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}   
-             IMAGE_NAME: romaintestu/my-tweet-app-lacework
-             IMAGE_TAG: ${{ env.GHA_SHA }}
-             SAVE_RESULTS_IN_LACEWORK: true
-             SAVE_BUILD_REPORT: true
-             BUILD_REPORT_FILE_NAME: myreport.html
-             FAIL_BUILD: true
-             SEVERITY_THRESHOLD: fixable
-             LW_SCANNER_DISABLE_LIBRARY_PACKAGES_SCANNING: true
-             USE_POLICY: true
+#         - name: lw-scanner Fortuneo
+#          uses: lacework/lw-scanner-action@v0.6.0
+#         with:
+#            LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }} 
+#            LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}   
+#            IMAGE_NAME: romaintestu/my-tweet-app-lacework
+#            IMAGE_TAG: ${{ env.GHA_SHA }}
+#            SAVE_RESULTS_IN_LACEWORK: true
+#            SAVE_BUILD_REPORT: true
+#            BUILD_REPORT_FILE_NAME: myreport.html
+#            FAIL_BUILD: true
+#            SEVERITY_THRESHOLD: fixable
+#            LW_SCANNER_DISABLE_LIBRARY_PACKAGES_SCANNING: true
+#            USE_POLICY: true
             
          - name: Context
            if: ${{ failure() }} 
@@ -81,3 +81,25 @@ jobs:
            with:
              push: true
              tags: romaintestu/my-tweet-app-lacework:${{ env.GHA_SHA }},romaintestu/my-tweet-app-lacework:latest,romaintestu/my-tweet-app-lacework:production
+             
+             
+         - name: Configure AWS credentials
+           uses: aws-actions/configure-aws-credentials@v1
+           with:
+             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+             aws-region: us-east-1
+
+         - name: deploy to cluster
+           uses: kodermax/kubectl-aws-eks@master
+           env:
+             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+           with:
+             args: set image deployment/my-tweet-app my-tweet-app=jeromebaude/my-tweet-app-lacework:${{ env.GHA_SHA }} -n lacework
+
+         - name: verify deployment
+           uses: kodermax/kubectl-aws-eks@master
+           env:
+             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+           with:
+             args: rollout status deployment/my-tweet-app -w -n lacework
