@@ -1,7 +1,7 @@
 # Use Alpine as base test
 FROM alpine:3.10
 
-#USER root
+USER root
 
 # Maintainer
 LABEL maintainer="andreas@lacework.net"
