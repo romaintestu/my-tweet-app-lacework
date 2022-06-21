@@ -27,8 +27,8 @@ def index():
     shell = False
     if 'shell' in request.args:
         shell = True
-    return render_template('index.html', url=url, hostname=hostname, ip=request.remote_addr, cocktail=random_cocktail['drinks'][0]['strDrink'], shell=shell, app_name=app_name)
-
+   # return render_template('index.html', url=url, hostname=hostname, ip=request.remote_addr, cocktail=random_cocktail['drinks'][0]['strDrink'], shell=shell, app_name=app_name)
+    return render_template('index.html', url=url, hostname=hostname, ip=request.remote_addr, cocktail="Mojito", shell=shell, app_name=app_name)
 
 @app.route('/ip')
 def ip():
