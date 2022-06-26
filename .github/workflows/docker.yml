@@ -33,9 +33,7 @@ jobs:
             SAVE_RESULTS_IN_LACEWORK: true
             SAVE_BUILD_REPORT: true
             BUILD_REPORT_FILE_NAME: myreport.html
- #           FAIL_BUILD: false
             SEVERITY_THRESHOLD: fixable
-#            USE_POLICY: false
             
          - name: Context
            if: ${{ failure() }} 
