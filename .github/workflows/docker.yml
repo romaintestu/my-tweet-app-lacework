@@ -33,10 +33,9 @@ jobs:
             SAVE_RESULTS_IN_LACEWORK: true
             SAVE_BUILD_REPORT: true
             BUILD_REPORT_FILE_NAME: myreport.html
-            FAIL_BUILD: false
+ #           FAIL_BUILD: false
             SEVERITY_THRESHOLD: fixable
-            LW_SCANNER_DISABLE_LIBRARY_PACKAGES_SCANNING: true
-            USE_POLICY: false
+#            USE_POLICY: false
             
          - name: Context
            if: ${{ failure() }} 
