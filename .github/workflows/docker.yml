@@ -34,6 +34,7 @@ jobs:
             SAVE_BUILD_REPORT: true
             BUILD_REPORT_FILE_NAME: myreport.html
             SEVERITY_THRESHOLD: fixable
+            USE_POLICY: true
             
          - name: Context
            if: ${{ failure() }} 
