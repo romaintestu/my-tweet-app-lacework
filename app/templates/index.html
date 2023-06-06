@@ -23,16 +23,26 @@
             <div class="col p-3">
                 <!--img src="{{ url }}" alt="BeachOps" class="img-fluid" loading="lazy"-->
                 <form>
-                    <label for="firstname">Account Name:</label>
-                    <input type="text" name="account"  required>
-                    <br><br>
-                    <label for="lastname">Contact Name:</label>
-                    <input type="text" name="contact_name"  required>
-                    <br><br>
-                    <label for="email">Who booked the meeting?</label>
-                    <input type="email" name="booked_by"  required>
-                    <br><br>
-                    <input type="submit" value="Booked!">
+                    <table>
+                        <tr>
+                            <td><label for="firstname">Account Name:</label></td>
+                            <td><input type="text" name="account"  required></td>
+                        </tr>
+           
+                        <tr>
+                            <td><label for="lastname">Contact Name:</label></td>
+                            <td><input type="text" name="contact_name"  required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="text">Who booked the meeting?</label></td>
+                            <td><input type="text" name="booked_by"  required></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Booked!"></td>
+                        </tr>    
+                    <table>
                 </form>
             </div>
         </div>
