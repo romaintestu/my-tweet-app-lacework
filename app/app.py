@@ -20,6 +20,7 @@ def index():
         url_for('static', filename='norules-1.png'),
         url_for('static', filename='norules-2.png'),
     ]
+    sys.stdout.write("OUTPUT :::" + resp)
     url = random.choice(images)
     hostname = platform.node()
     random_cocktail = requests.get(
