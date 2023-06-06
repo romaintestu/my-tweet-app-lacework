@@ -21,7 +21,19 @@
         </div>
         <div class="row">
             <div class="col p-3">
-                <img src="{{ url }}" alt="BeachOps" class="img-fluid" loading="lazy">
+                <!--img src="{{ url }}" alt="BeachOps" class="img-fluid" loading="lazy"-->
+                <form>
+                    <label for="firstname">Account Name:</label>
+                    <input type="text" name="account"  required>
+                    <br>
+                    <label for="lastname">Contact Name:</label>
+                    <input type="text" name="contact_name"  required>
+                    <br>
+                    <label for="email">Who booked the meeting?</label>
+                    <input type="email" name="booked_by"  required>
+                    <br>
+                    <input type="submit" value="Booked!">
+                </form>
             </div>
         </div>
         <div class="row">
@@ -75,6 +87,9 @@
             </div>
         </div>
         {% endif %}
+        
+        
+        
     </div>
     {% if shell %}
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
