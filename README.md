@@ -9,7 +9,7 @@ This application was designed to show how easy it is to integrate Lacework Vulne
 
 It is using a simple Docker container image based on Alpine, Python and Flask as componentes that have some critical and medium vulnerabilities.
 
-## How can you use it?
+## How can you use it??
 
 To be able to use it you must have:
 
