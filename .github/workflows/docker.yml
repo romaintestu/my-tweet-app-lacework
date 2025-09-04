@@ -28,8 +28,8 @@ jobs:
            with:
             #LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }} 
             LW_ACCOUNT_NAME: lwintforticnappeu 
-            #LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}   
-            LW_ACCESS_TOKEN: _5f6e1d8df83666579ecb24b7018f5301
+            LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}   
+            
             IMAGE_NAME: romaintestu/my-tweet-app-lacework
             IMAGE_TAG: ${{ env.GHA_SHA }}
             SAVE_RESULTS_IN_LACEWORK: true
